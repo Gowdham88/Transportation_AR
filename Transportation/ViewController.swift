@@ -56,7 +56,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             // That 3d coordinate will only be considered when it is on the existing plane that we detected.
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
             
-            // if we have got some results using the hitTest then do this
+            // if we have got some results using the hitTest then do this.
             if let hitResult = results.first {
                 
                 
