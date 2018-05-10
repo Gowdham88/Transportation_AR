@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8ED464C320A4777E008F5BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED464C220A4777E008F5BD5 /* Constants.swift */; };
 		AE9DC65320A174D70054084D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9DC65220A174D70054084D /* AppDelegate.swift */; };
 		AE9DC65520A174D70054084D /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AE9DC65420A174D70054084D /* art.scnassets */; };
 		AE9DC65720A174D70054084D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9DC65620A174D70054084D /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8ED464C220A4777E008F5BD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AE9DC64F20A174D70054084D /* Transportation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transportation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9DC65220A174D70054084D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE9DC65420A174D70054084D /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				AE9DC65B20A174DB0054084D /* Assets.xcassets */,
 				AE9DC65D20A174DB0054084D /* LaunchScreen.storyboard */,
 				AE9DC66020A174DB0054084D /* Info.plist */,
+				8ED464C220A4777E008F5BD5 /* Constants.swift */,
 			);
 			path = Transportation;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				AE9DC65720A174D70054084D /* ViewController.swift in Sources */,
 				AE9DC65320A174D70054084D /* AppDelegate.swift in Sources */,
+				8ED464C320A4777E008F5BD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
