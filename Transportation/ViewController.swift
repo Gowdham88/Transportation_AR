@@ -18,9 +18,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
     var hideBool:Bool = true
-    var boxScene: SCNScene!
-//    var carosse_a: SCNNode!
-   
+//    var boxScene: SCNScene!
+    var carosse_a: SCNNode!
+    var lemkrad: SCNNode!
     
     
     
@@ -57,12 +57,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBAction func hideCarPartsAction(_ sender: Any) {
         
         if hideCarParts.isOn == true {
-            
-            hideParts()
-//            hideBool = true
+
+            hideBool = false
         } else {
 //            hideParts()
-//            hideBool = false
+            hideBool = true
         }
         
     }
@@ -82,12 +81,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hitResult = results.first {
                 
                 
-                 boxScene = SCNScene(named: "art.scnassets/astt.scn")!
+               let boxScene = SCNScene(named: "art.scnassets/astt.scn")!
                 
                 if let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true) {
                     print("box:::\(boxNode.childNodes)")
         
                     
+                    if hideBool == false {
+                    
+                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: false)!
+                        lemkrad.isHidden = false
+                        
+                    } else {
+                        
+                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+                        lemkrad.isHidden = true
+                        
+                    }
+                    
+//                    lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//                    lemkrad.isHidden = true
                    
 //                    hideParts(boxScene: boxScene)
                     boxNode.position = SCNVector3(x: hitResult.worldTransform.columns.3.x, y: hitResult.worldTransform.columns.3.y + 0.15, z: hitResult.worldTransform.columns.3.z)
@@ -105,55 +118,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func hideParts(){
         
-//      if hideBool == true {
-       
-        
-        boxScene = SCNScene(named: "art.scnassets/astt.scn")!
-        
-        let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true)
-        print("box:::\(String(describing: boxNode?.childNodes))")
-      
-        
-        UIView.animate(withDuration: 1, animations: {
-            
-                
-            Constants.carosse_a = self.boxScene.rootNode.childNode(withName: "carosse_a", recursively: true)
-            Constants.carosse_a.isHidden = true
-            
-            
-            Constants.motorhaube = self.boxScene.rootNode.childNode(withName: "motorhaube", recursively: true)
-            Constants.motorhaube.isHidden = true
 
-            Constants.stoff = self.boxScene.rootNode.childNode(withName: "stoff", recursively: true)
-            Constants.stoff.isHidden = true
-
-            Constants.radkasten = self.boxScene.rootNode.childNode(withName: "radkasten", recursively: true)
-            Constants.radkasten.isHidden = true
-
-            Constants.spoiler = self.boxScene.rootNode.childNode(withName: "spoiler", recursively: true)
-            Constants.spoiler.isHidden = true
-        })
-//        } else {
-//
-//            UIView.animate(withDuration: 1, animations: {
-//
-//                Constants.carosse_a = self.boxScene.rootNode.childNode(withName: "carosse_a", recursively: true)
-//                Constants.carosse_a.isHidden = false
-//
-//                Constants.motorhaube = self.boxScene.rootNode.childNode(withName: "motorhaube", recursively: true)
-//                Constants.motorhaube.isHidden = false
-//
-//                Constants.stoff = self.boxScene.rootNode.childNode(withName: "stoff", recursively: true)
-//                Constants.stoff.isHidden = false
-//
-//                Constants.radkasten = self.boxScene.rootNode.childNode(withName: "radkasten", recursively: true)
-//                Constants.radkasten.isHidden = false
-//
-//                Constants.spoiler = self.boxScene.rootNode.childNode(withName: "spoiler", recursively: true)
-//                Constants.spoiler.isHidden = false
-//            })
-//
-//        }
+            let boxScene = SCNScene(named: "art.scnassets/astt.scn")!
+            
+            let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true)
+            print("box:::\(String(describing: boxNode?.childNodes))")
+            
+            lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+            lemkrad.isHidden = true
+        
+        
     }
     // this is a delegate method which comes from ARSCNViewDelegate, and this method is called when a horizontal plane is detected.
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
