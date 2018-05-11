@@ -14,9 +14,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-  
+    @IBOutlet weak var hideCarParts: UISwitch!
     
     
+    var hideBool:Bool = true
     var boxScene: SCNScene!
     
    
@@ -53,6 +54,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
+    @IBAction func hideCarPartsAction(_ sender: Any) {
+        
+        if hideCarParts.isOn == true {
+            
+            hideParts()
+            hideBool = true
+        } else {
+            hideParts()
+            hideBool = false
+        }
+        
+    }
     // called when touches are detected on the screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -92,21 +105,45 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func hideParts(){
         
-        Constants.carosse_a = boxScene.rootNode.childNode(withName: "carosse_a", recursively: true)
-        Constants.carosse_a.isHidden = true
-        
-        Constants.motorhaube = boxScene.rootNode.childNode(withName: "motorhaube", recursively: true)
-        Constants.motorhaube.isHidden = true
-        
-        Constants.stoff = boxScene.rootNode.childNode(withName: "stoff", recursively: true)
-        Constants.stoff.isHidden = true
-        
-        Constants.radkasten = boxScene.rootNode.childNode(withName: "radkasten", recursively: true)
-        Constants.radkasten.isHidden = true
-        
-        Constants.spoiler = boxScene.rootNode.childNode(withName: "spoiler", recursively: true)
-        Constants.spoiler.isHidden = true
-        
+        if hideBool == true {
+        UIView.animate(withDuration: 1, animations: {
+          
+            Constants.carosse_a = self.boxScene.rootNode.childNode(withName: "carosse_a", recursively: true)
+            Constants.carosse_a.isHidden = true
+            
+            Constants.motorhaube = self.boxScene.rootNode.childNode(withName: "motorhaube", recursively: true)
+            Constants.motorhaube.isHidden = true
+            
+            Constants.stoff = self.boxScene.rootNode.childNode(withName: "stoff", recursively: true)
+            Constants.stoff.isHidden = true
+            
+            Constants.radkasten = self.boxScene.rootNode.childNode(withName: "radkasten", recursively: true)
+            Constants.radkasten.isHidden = true
+            
+            Constants.spoiler = self.boxScene.rootNode.childNode(withName: "spoiler", recursively: true)
+            Constants.spoiler.isHidden = true
+        })
+        } else {
+            
+            UIView.animate(withDuration: 1, animations: {
+                
+                Constants.carosse_a = self.boxScene.rootNode.childNode(withName: "carosse_a", recursively: true)
+                Constants.carosse_a.isHidden = false
+                
+                Constants.motorhaube = self.boxScene.rootNode.childNode(withName: "motorhaube", recursively: true)
+                Constants.motorhaube.isHidden = false
+                
+                Constants.stoff = self.boxScene.rootNode.childNode(withName: "stoff", recursively: true)
+                Constants.stoff.isHidden = false
+                
+                Constants.radkasten = self.boxScene.rootNode.childNode(withName: "radkasten", recursively: true)
+                Constants.radkasten.isHidden = false
+                
+                Constants.spoiler = self.boxScene.rootNode.childNode(withName: "spoiler", recursively: true)
+                Constants.spoiler.isHidden = false
+            })
+            
+        }
     }
     // this is a delegate method which comes from ARSCNViewDelegate, and this method is called when a horizontal plane is detected.
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
