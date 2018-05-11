@@ -17,7 +17,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var hideCarParts: UISwitch!
     
     
-    var hideBool:Bool = true
+    var hideBool:Bool = false
 //    var boxScene: SCNScene!
     var carosse_a: SCNNode!
     var lemkrad: SCNNode!
@@ -58,10 +58,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         if hideCarParts.isOn == true {
 
-            hideBool = false
+            hideBool = true
         } else {
 //            hideParts()
-            hideBool = true
+            hideBool = false
         }
         
     }
@@ -89,7 +89,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     
                     if hideBool == false {
                     
-                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: false)!
+                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
                         lemkrad.isHidden = false
                         
                     } else {
