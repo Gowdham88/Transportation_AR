@@ -14,6 +14,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+  
+    
+    
+    var boxScene: SCNScene!
+    
+   
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,12 +69,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hitResult = results.first {
                 
                 
-                let boxScene = SCNScene(named: "art.scnassets/astt.scn")!
+                 boxScene = SCNScene(named: "art.scnassets/astt.scn")!
                 
                 if let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true) {
-                    print("box:::\(boxNode)")
+                    print("box:::\(boxNode.childNodes)")
+        
                     
-                    
+                   
+//                    hideParts(boxScene: boxScene)
                     boxNode.position = SCNVector3(x: hitResult.worldTransform.columns.3.x, y: hitResult.worldTransform.columns.3.y + 0.15, z: hitResult.worldTransform.columns.3.z)
                     
                     // finally the box is added to the scene.
@@ -79,7 +90,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    
+    func hideParts(){
+        
+        Constants.carosse_a = boxScene.rootNode.childNode(withName: "carosse_a", recursively: true)
+        Constants.carosse_a.isHidden = true
+        
+        Constants.motorhaube = boxScene.rootNode.childNode(withName: "motorhaube", recursively: true)
+        Constants.motorhaube.isHidden = true
+        
+        Constants.stoff = boxScene.rootNode.childNode(withName: "stoff", recursively: true)
+        Constants.stoff.isHidden = true
+        
+        Constants.radkasten = boxScene.rootNode.childNode(withName: "radkasten", recursively: true)
+        Constants.radkasten.isHidden = true
+        
+        Constants.spoiler = boxScene.rootNode.childNode(withName: "spoiler", recursively: true)
+        Constants.spoiler.isHidden = true
+        
+    }
     // this is a delegate method which comes from ARSCNViewDelegate, and this method is called when a horizontal plane is detected.
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
