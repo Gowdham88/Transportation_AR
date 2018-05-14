@@ -132,47 +132,48 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // this is a delegate method which comes from ARSCNViewDelegate, and this method is called when a horizontal plane is detected.
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
-        if anchor is ARPlaneAnchor {
-            
-            // anchors can be of many types, as we are just dealing with horizontal plane detection we need to downcast anchor to ARPlaneAnchor
-            let planeAnchor = anchor as! ARPlaneAnchor
-            
-            // creating a plane geometry with the help of dimentions we got using plane anchor.
-            let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
-            
-            // a node is basically a position.
-            let planeNode = SCNNode()
-            
-            // setting the position of the plane geometry to the position we got using plane anchor.
-            planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
-            
-            // when a plane is created its created in xy plane instead of xz plane, so we need to rotate it along x axis.
-            planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
-            
-            //create a material object
-            let gridMaterial = SCNMaterial()
-            
-            //setting the material as an image. A material can also be set to a color.
-            gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
-            
-            // assigning the material to the plane
-            plane.materials = [gridMaterial]
-            
-            
-            // assigning the position to the plane
-            planeNode.geometry = plane
-            
-            //adding the plane node in our scene
-            node.addChildNode(planeNode)
-            
-            
-            
-        }
-            
-        else {
-            
-            return
-        }
+                if anchor is ARPlaneAnchor {
+        
+//         anchors can be of many types, as we are just dealing with horizontal plane detection we need to downcast anchor to ARPlaneAnchor
+                    let planeAnchor = anchor as! ARPlaneAnchor
+        
+//         creating a plane geometry with the help of dimentions we got using plane anchor.
+                    let plane = SCNPlane(width: CGFloat(planeAnchor.extent.x), height: CGFloat(planeAnchor.extent.z))
+        
+                    // a node is basically a position.
+                    let planeNode = SCNNode()
+        
+//         setting the position of the plane geometry to the position we got using plane anchor.
+                    planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
+        
+                    // when a plane is created its created in xy plane instead of xz plane, so we need to rotate it along x axis.
+                    planeNode.transform = SCNMatrix4MakeRotation(-Float.pi/2, 1, 0, 0)
+        
+                    //create a material object
+                    let gridMaterial = SCNMaterial()
+        
+                    //setting the material as an image. A material can also be set to a color.
+                    gridMaterial.diffuse.contents = UIImage(named: "art.scnassets/grid.png")
+        
+                    // assigning the material to the plane
+                    plane.materials = [gridMaterial]
+        
+        
+                    // assigning the position to the plane
+                    planeNode.geometry = plane
+        
+                    //adding the plane node in our scene
+                    node.addChildNode(planeNode)
+        
+        
+        
+                }
+        
+                else {
+        
+                    return
+                }
+        
         
     }
     
