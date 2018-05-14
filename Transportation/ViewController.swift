@@ -56,13 +56,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func hideCarPartsAction(_ sender: Any) {
         
-        if hideCarParts.isOn == true {
-
-            hideBool = true
-        } else {
-//            hideParts()
-            hideBool = false
-        }
+//        if hideCarParts.isOn == true {
+//
+//            hideBool = true
+//        } else {
+////            hideParts()
+//            hideBool = false
+//        }
         
     }
     // called when touches are detected on the screen
@@ -81,23 +81,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             if let hitResult = results.first {
                 
                 
-               let boxScene = SCNScene(named: "art.scnassets/astt.scn")!
+               let boxScene = SCNScene(named: "art.scnassets/porsche.scn")!
                 
                 if let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true) {
                     print("box:::\(boxNode.childNodes)")
         
-                    
-                    if hideBool == false {
-                    
-                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
-                        lemkrad.isHidden = false
-                        
-                    } else {
-                        
-                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
-                        lemkrad.isHidden = true
-                        
-                    }
+//
+//                    if hideBool == false {
+//
+//                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//                        lemkrad.isHidden = false
+//
+//                    } else {
+//
+//                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//                        lemkrad.isHidden = true
+//
+//                    }
                     
 //                    lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
 //                    lemkrad.isHidden = true
@@ -119,13 +119,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func hideParts(){
         
 
-            let boxScene = SCNScene(named: "art.scnassets/astt.scn")!
-            
-            let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true)
-            print("box:::\(String(describing: boxNode?.childNodes))")
-            
-            lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
-            lemkrad.isHidden = true
+//            let boxScene = SCNScene(named: "art.scnassets/astt.scn")!
+//
+//            let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true)
+//            print("box:::\(String(describing: boxNode?.childNodes))")
+//
+//            lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//            lemkrad.isHidden = true
         
         
     }
