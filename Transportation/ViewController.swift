@@ -143,7 +143,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     // a node is basically a position.
                     let planeNode = SCNNode()
         
-//         setting the position of the plane geometry to the position we got using plane anchor.
+//         set ting the position of the plane geometry to the position we got using plane anchor.
                     planeNode.position = SCNVector3(x: planeAnchor.center.x, y: 0, z: planeAnchor.center.z)
         
                     // when a plane is created its created in xy plane instead of xz plane, so we need to rotate it along x axis.
