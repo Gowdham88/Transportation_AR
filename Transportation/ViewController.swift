@@ -21,6 +21,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //    var boxScene: SCNScene!
     var carosse_a: SCNNode!
     var lemkrad: SCNNode!
+
     
     
     
@@ -66,26 +67,76 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     // called when touches are detected on the screen
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        /*
+//         1. Get The Current Touch Location
+//         2. Check That We Have Touched A Valid Node
+//         3. Check If The Node Has A Name
+//         4. Handle The Touch
+//         */
+//
+//        guard let touchLocation = touches.first?.location(in: sceneView),
+//            let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
+//
+//
+//           var  boxScene = SCNScene(named: "art.scnassets/porsche.scn")!
+//
+//        if let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true) {
+//            print("box:::\(boxNode.childNodes)")
+//
+//            //
+//            //                    if hideBool == false {
+//            //
+//            //                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//            //                        lemkrad.isHidden = false
+//            //
+//            //                    } else {
+//            //
+//            //                        lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//            //                        lemkrad.isHidden = true
+//            //
+//            //                    }
+//
+//            //                    lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
+//            //                    lemkrad.isHidden = true
+//
+//            //                    hideParts(boxScene: boxScene)
+//            boxNode.position = SCNVector3(x: hitNode.worldTransform.columns.3.x, y: hitNode.worldTransform.columns.3.y, z: hitNode.worldTransform.columns.3.z)
+//            let nodeName = hitNode.name
+//
+//        //Handle Event Here e.g. PerformSegue
+//        }
+//
+//        else  {
+//            //No Node Has Been Tapped
+//            return
+//
+//        }
+//    }
+
         
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
         if let touch = touches.first {
-            
+
             // gives us the location of where we touched on the 2D screen.
             let touchLocation = touch.location(in: sceneView)
-            
+
             // hitTest is performed to get the 3D coordinates corresponding to the 2D coordinates that we got from touching the screen.
             // That 3d coordinate will only be considered when it is on the existing plane that we detected.
             let results = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
-            
+
             // if we have got some results using the hitTest then do this.
             if let hitResult = results.first {
-                
-                
+
+
                let boxScene = SCNScene(named: "art.scnassets/porsche.scn")!
-                
+
                 if let boxNode = boxScene.rootNode.childNode(withName: "car", recursively: true) {
                     print("box:::\(boxNode.childNodes)")
-        
+
 //
 //                    if hideBool == false {
 //
@@ -98,23 +149,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //                        lemkrad.isHidden = true
 //
 //                    }
-                    
+
 //                    lemkrad = boxScene.rootNode.childNode(withName: "lemkrad", recursively: true)!
 //                    lemkrad.isHidden = true
-                   
+
 //                    hideParts(boxScene: boxScene)
                     boxNode.position = SCNVector3(x: hitResult.worldTransform.columns.3.x, y: hitResult.worldTransform.columns.3.y + 0.15, z: hitResult.worldTransform.columns.3.z)
-                    
+
                     // finally the box is added to the scene.
                     sceneView.scene.rootNode.addChildNode(boxNode)
-                    
+
                 }
-                
-                
+
+
             }
-            
+
         }
     }
+    
+    
     
     func hideParts(){
         
@@ -177,6 +230,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+//    func addAnimation(node: SCNNode) {
+//        let rotateOne = SCNAction.rotateBy(x: 0, y: CGFloat(Float.pi), z: 0, duration: 5.0)
+//        let repeatForever = SCNAction.repeatForever(rotateOne)
+//        node.runAction(repeatForever)
+//    }
 
 
     // MARK: - ARSCNViewDelegate
