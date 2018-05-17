@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8EA9475020AC4C3100ACD42F /* Senior Midi.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "Senior Midi.scn"; path = "../../../../Users/czsm4/Documents/busimgs/Senior Midi/Senior Midi.scn"; sourceTree = "<group>"; };
 		8ED464C220A4777E008F5BD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AE64681E20ABE6DA00421D58 /* itemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemCell.swift; sourceTree = "<group>"; };
 		AE9DC64F20A174D70054084D /* Transportation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transportation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9DC65220A174D70054084D /* AppDelegate.swift */,
+				8EA9475020AC4C3100ACD42F /* Senior Midi.scn */,
 				AE9DC65420A174D70054084D /* art.scnassets */,
 				AE9DC65620A174D70054084D /* ViewController.swift */,
 				AE64681E20ABE6DA00421D58 /* itemCell.swift */,

@@ -2,7 +2,11 @@ import UIKit
 import ARKit
 class ViewController: UIViewController, UICollectionViewDataSource , UICollectionViewDelegate, ARSCNViewDelegate{
     
-    let itemsArray: [String] = ["cup", "benz", "boxing", "table","newCar"]
+    
+
+    
+    
+    let itemsArray: [String] = ["cup", "benz","newCar","truck"]
     @IBOutlet weak var itemsCollectionView: UICollectionView!
     @IBOutlet weak var sceneView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
