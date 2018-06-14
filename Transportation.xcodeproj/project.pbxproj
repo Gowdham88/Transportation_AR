@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E9ADF5E20AD814700959275 /* Drone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9ADF5D20AD814700959275 /* Drone.swift */; };
 		8ED464C320A4777E008F5BD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED464C220A4777E008F5BD5 /* Constants.swift */; };
 		AE64681F20ABE6DA00421D58 /* itemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE64681E20ABE6DA00421D58 /* itemCell.swift */; };
 		AE9DC65320A174D70054084D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9DC65220A174D70054084D /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E9ADF5D20AD814700959275 /* Drone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drone.swift; sourceTree = "<group>"; };
 		8EA9475020AC4C3100ACD42F /* Senior Midi.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "Senior Midi.scn"; path = "../../../../Users/czsm4/Documents/busimgs/Senior Midi/Senior Midi.scn"; sourceTree = "<group>"; };
 		8ED464C220A4777E008F5BD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AE64681E20ABE6DA00421D58 /* itemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemCell.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				AE9DC65D20A174DB0054084D /* LaunchScreen.storyboard */,
 				AE9DC66020A174DB0054084D /* Info.plist */,
 				8ED464C220A4777E008F5BD5 /* Constants.swift */,
+				8E9ADF5D20AD814700959275 /* Drone.swift */,
 			);
 			path = Transportation;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE64681F20ABE6DA00421D58 /* itemCell.swift in Sources */,
+				8E9ADF5E20AD814700959275 /* Drone.swift in Sources */,
 				AE9DC65720A174D70054084D /* ViewController.swift in Sources */,
 				AE9DC65320A174D70054084D /* AppDelegate.swift in Sources */,
 				8ED464C320A4777E008F5BD5 /* Constants.swift in Sources */,

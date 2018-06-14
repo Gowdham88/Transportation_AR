@@ -1,5 +1,8 @@
 import UIKit
 import ARKit
+
+
+
 class ViewController: UIViewController, UICollectionViewDataSource , UICollectionViewDelegate, ARSCNViewDelegate{
     
     
@@ -11,6 +14,9 @@ class ViewController: UIViewController, UICollectionViewDataSource , UICollectio
     @IBOutlet weak var sceneView: ARSCNView!
     let configuration = ARWorldTrackingConfiguration()
     var selectedItem: String?
+    var wheel1_pivot      : SCNNode!
+    var scene: SCNScene?
+    var node: SCNNode?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sceneView.debugOptions = [ ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
@@ -21,6 +27,9 @@ class ViewController: UIViewController, UICollectionViewDataSource , UICollectio
         self.sceneView.delegate = self
         self.registerGestureRecognizers()
         self.sceneView.autoenablesDefaultLighting = true
+        
+    
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -28,6 +37,20 @@ class ViewController: UIViewController, UICollectionViewDataSource , UICollectio
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    func startRotation() {
+//        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+//        rotation.fromValue = 0
+//        rotation.toValue = NSNumber(value: Double.pi)
+//        rotation.duration = 1.0
+//        rotation.isCumulative = true
+//        rotation.repeatCount = FLT_MAX
+//        self.view.layer.add(rotation, forKey: "rotationAnimation")
+//    }
+//
+//    func stopRotation() {
+//        self.view.layer.removeAnimation(forKey: "rotationAnimation")
+//    }
     
     func registerGestureRecognizers() {
         
@@ -66,12 +89,26 @@ class ViewController: UIViewController, UICollectionViewDataSource , UICollectio
     
     func addItem(hitTestResult: ARHitTestResult) {
         if let selectedItem = self.selectedItem {
-            let scene = SCNScene(named: "art.scnassets/\(selectedItem).scn")
-            let node = (scene?.rootNode.childNode(withName: selectedItem, recursively: false))!
+            scene = SCNScene(named: "art.scnassets/\(selectedItem).scn")
+            
+             node  = (scene?.rootNode.childNode(withName: selectedItem, recursively: false))!
+//            let frontwheelleft = newCar.childNode(withName: "front_wheelleft", recursively: false)!
+//            let backwheelleft = newCar.childNode(withName: "back_wheelleft", recursively: false)!
+//            let frontwheelright = newCar.childNode(withName: "front_wheelright", recursively: false)!
+//            let backwheelright = newCar.childNode(withName: "back_wheelright", recursively: false)!
+//
+//            let v_frontleftwheel = SCNPhysicsVehicleWheel(node: frontwheelleft)
+//             let v_backleftwheel = SCNPhysicsVehicleWheel(node: backwheelleft)
+//             let v_frontrightwheel = SCNPhysicsVehicleWheel(node: frontwheelright)
+//             let v_backrightwheel = SCNPhysicsVehicleWheel(node: backwheelright)
+            
             let transform = hitTestResult.worldTransform
             let thirdColumn = transform.columns.3
-            node.position = SCNVector3(thirdColumn.x, thirdColumn.y, thirdColumn.z)
-            self.sceneView.scene.rootNode.addChildNode(node)
+            node?.position = SCNVector3(thirdColumn.x, thirdColumn.y, thirdColumn.z)
+            
+//            let vehicle = SCNPhysicsVehicle(chassisBody: newCar.physicsBody!, wheels: [v_frontleftwheel, v_backleftwheel, v_frontrightwheel, v_backrightwheel])
+//            self.sceneView.scene.physicsWorld.addBehavior(vehicle)
+            self.sceneView.scene.rootNode.addChildNode  (node!)
         }
     }
     
@@ -98,7 +135,25 @@ class ViewController: UIViewController, UICollectionViewDataSource , UICollectio
         guard anchor is ARPlaneAnchor else {return}
     }
     
-    
+    @IBAction func btnback(_ sender: Any) {
+        if scene != nil && node != nil {
+
+
+            node?.position = SCNVector3(-2, 0, -2)
+            self.sceneView.scene.rootNode.addChildNode(node!)
+        }
+
+    }
+    @IBAction func btnfoward(_ sender: Any) {
+
+        if scene != nil && node != nil {
+
+            node?.position = SCNVector3(2, 0, 2)
+            self.sceneView.scene.rootNode.addChildNode(node!)
+
+        }
+    }
+
 }
 
 extension Int {
